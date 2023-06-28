@@ -1,3 +1,5 @@
+import ClientOnly from "./components/ClientOnly";
+import Modal from "./components/modals/Modal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -17,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
+        <ClientOnly>
+          <Modal isOpen title="Login Modal" actionLabel="Submit" />
+          <Navbar />
+        </ClientOnly>
         {children}
       </body>
     </html>

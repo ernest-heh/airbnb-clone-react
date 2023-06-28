@@ -6,4 +6,12 @@ html,
 body,
 :root {
   height: 100%;
+  word-spacing: 0.2rem;
+}
+
+button,
+label,
+input {
+  font-family: inherit;
+  word-spacing: inherit;
 }
