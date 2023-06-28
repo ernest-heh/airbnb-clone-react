@@ -2,18 +2,23 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Icons } from "../Icons";
 
 const Logo = () => {
   const router = useRouter();
 
   return (
-    <Image
-      alt="logo"
-      className="hidden md:block cursor-pointer"
-      height="100"
-      width="100"
-      src="/images/logo.png"
-    />
+    // <Image
+    //   alt="logo"
+    //   className="hidden md:block cursor-pointer"
+    //   height="100"
+    //   width="100"
+    //   src="/images/logo.png"
+    // />
+    <div onClick={() => router.push("/")}>
+      <Icons.airbnbLogo />
+    </div>
   );
 };
+
 export default Logo;
