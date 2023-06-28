@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./components/modals/LoginModal";
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
           <Navbar />
         </ClientOnly>
