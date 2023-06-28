@@ -3,14 +3,14 @@
 import { FC } from "react";
 
 interface MenuItemProps {
-  handleClick: () => void;
+  onClick: () => void;
   label: string;
 }
 
-const MenuItem: FC<MenuItemProps> = ({ handleClick, label }) => {
+const MenuItem: FC<MenuItemProps> = ({ onClick, label }) => {
   return (
     <div
-      onClick={handleClick}
+      onClick={onClick}
       className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
     >
       {label}
