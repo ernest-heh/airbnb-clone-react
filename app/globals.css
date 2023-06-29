@@ -15,3 +15,10 @@ input {
   font-family: inherit;
   word-spacing: inherit;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
