@@ -14,6 +14,7 @@ const Avatar: FC<AvatarProps> = ({ src }) => {
       height="30"
       width="30"
       alt="avatar"
+      sizes="(max-width: 500px)"
       src={src || "/images/placeholder.jpg"}
     />
   );
