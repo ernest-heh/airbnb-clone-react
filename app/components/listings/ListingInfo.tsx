@@ -43,7 +43,7 @@ const ListingInfo: FC<ListingInfoProps> = ({
   return (
     <div className="col-span-4 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <div className="text-lg flex flex-row items-center gap-2">
+        <div className="text-xl flex flex-row items-center gap-2">
           <div>
             Hosted by <span className="font-bold">{user?.name}</span>
           </div>
