@@ -1,5 +1,5 @@
 export const Icons = {
-  airbnbLogo: () => (
+  rentbnbLogo: () => (
     <svg
       width="102"
       height="32"

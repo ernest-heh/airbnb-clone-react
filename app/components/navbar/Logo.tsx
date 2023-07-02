@@ -16,7 +16,7 @@ const Logo = () => {
     //   src="/images/logo.png"
     // />
     <div onClick={() => router.push("/")}>
-      <Icons.airbnbLogo />
+      <Icons.rentbnbLogo />
     </div>
   );
 };

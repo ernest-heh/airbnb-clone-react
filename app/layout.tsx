@@ -12,8 +12,8 @@ import SearchModal from "./components/modals/SearchModal";
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Holiday Homes & Apartment Rentals | Airbnb",
-  description: "Airbnb clone",
+  title: "Holiday Homes & Apartment Rentals",
+  description: "Rentbnb React App",
 };
 
 export default async function RootLayout({
