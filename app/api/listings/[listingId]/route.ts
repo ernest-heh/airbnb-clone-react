@@ -26,4 +26,6 @@ export async function DELETE(req: Request, { params }: { params: IParams }) {
       userId: currentUser.id,
     },
   });
+
+  return NextResponse.json(listing);
 }
