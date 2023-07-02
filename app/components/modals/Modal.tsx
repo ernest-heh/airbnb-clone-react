@@ -84,7 +84,7 @@ const Modal: FC<ModalProps> = ({
               {/* HEADER */}
               <div className="flex items-center p-6 rounded-t justify-center relative border-b">
                 <button
-                  className="p-1 border-0 hover:opacity-70 transition absolute left-9"
+                  className="p-1 border-0 hover:opacity-70 transition absolute left-5"
                   onClick={handleClose}
                 >
                   <IoMdClose size={18} />
