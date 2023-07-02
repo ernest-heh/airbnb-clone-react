@@ -31,3 +31,7 @@ input {
   width: 100% !important;
   font-size: 0.8rem !important;
 }
+
+.rdrDayToday .rdrDayNumber span:after {
+  background: #f43f5e !important;
+}
