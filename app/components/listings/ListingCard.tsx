@@ -84,7 +84,7 @@ const ListingCard: FC<ListingCardProps> = ({
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+          {data.title} in {location?.label}
         </div>
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}
