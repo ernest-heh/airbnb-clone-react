@@ -2,7 +2,7 @@
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
@@ -22,6 +22,9 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const rentModal = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
 
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const popupMenuRef = useRef<HTMLDivElement>(null);
+
   const toggleOpen = useCallback(() => {
     setIsOpen((val) => !val);
   }, []);
@@ -34,6 +37,33 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
   }, [currentUser, loginModal, rentModal]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        buttonRef.current &&
+        popupMenuRef.current &&
+        !buttonRef.current.contains(e.target as Node) &&
+        !popupMenuRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleCloseModal = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleCloseModal);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleCloseModal);
+    };
+  }, []);
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -44,6 +74,7 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
           List your home
         </div>
         <div
+          ref={buttonRef}
           className="p-4 md:py-1 md:px-2 border border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
           onClick={toggleOpen}
         >
@@ -55,7 +86,10 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
+        <div
+          ref={popupMenuRef}
+          className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm"
+        >
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
