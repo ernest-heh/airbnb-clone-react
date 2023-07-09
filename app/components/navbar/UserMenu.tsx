@@ -101,15 +101,24 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
                   label="My trips"
                 />
                 <MenuItem
-                  onClick={() => router.push("/favorites")}
+                  onClick={() => {
+                    router.push("/favorites");
+                    toggleOpen();
+                  }}
                   label="My favorites"
                 />
                 <MenuItem
-                  onClick={() => router.push("/reservations")}
+                  onClick={() => {
+                    router.push("/reservations");
+                    toggleOpen();
+                  }}
                   label="My reservations"
                 />
                 <MenuItem
-                  onClick={() => router.push("/properties")}
+                  onClick={() => {
+                    router.push("/properties");
+                    toggleOpen();
+                  }}
                   label="My properties"
                 />
                 <MenuItem onClick={rentModal.onOpen} label="Rentbnb my home" />
