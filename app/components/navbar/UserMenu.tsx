@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
 import { useRouter } from "next/navigation";
+import useClickOutside from "@/app/hooks/useClickOutside";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -22,7 +23,6 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const rentModal = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
 
-  const buttonRef = useRef<HTMLDivElement>(null);
   const popupMenuRef = useRef<HTMLDivElement>(null);
 
   const toggleOpen = useCallback(() => {
@@ -37,29 +37,18 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
   }, [currentUser, loginModal, rentModal]);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        buttonRef.current &&
-        popupMenuRef.current &&
-        !buttonRef.current.contains(e.target as Node) &&
-        !popupMenuRef.current.contains(e.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
+  useClickOutside(popupMenuRef, () => setIsOpen(false));
 
+  useEffect(() => {
     const handleCloseModal = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleCloseModal);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleCloseModal);
     };
   }, []);
@@ -74,7 +63,6 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
           List your home
         </div>
         <div
-          ref={buttonRef}
           className="p-4 md:py-1 md:px-2 border border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
           onClick={toggleOpen}
         >
